@@ -82,7 +82,7 @@
   <?php endif; ?>
       <?php print render($title_prefix); ?>
       <?php if (!$page): ?>
-      <h2 class="title" <?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <h2 class="title cl-effect-5" <?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><span data-hover="<?php print $title; ?>"><?php print $title; ?></span></a></h2>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
   
@@ -102,12 +102,13 @@
       // Hide comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
+      hide($content['field_tags']);
       print render($content);
     ?>
   </div>
 
   <?php if (!empty($content['links'])): ?>
-    <footer>
+    <footer class="">
       <?php print render($content['links']); ?>
     </footer>
   <?php endif; ?>

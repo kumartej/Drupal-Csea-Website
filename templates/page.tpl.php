@@ -96,48 +96,68 @@
     </div>
   </header>
 
-  <div id="site-main-content">
+  <div class="site-main-content">
   <?php if ($is_front): ?>
   <?php if (theme_get_setting('slideshow_display','nexus')): ?>
   <?php 
     $slide1_head = check_plain(theme_get_setting('slide1_head','nexus'));   $slide1_desc = check_markup(theme_get_setting('slide1_desc','nexus'), 'full_html'); $slide1_url = check_plain(theme_get_setting('slide1_url','nexus'));
     $slide2_head = check_plain(theme_get_setting('slide2_head','nexus'));   $slide2_desc = check_markup(theme_get_setting('slide2_desc','nexus'), 'full_html'); $slide2_url = check_plain(theme_get_setting('slide2_url','nexus'));
     $slide3_head = check_plain(theme_get_setting('slide3_head','nexus'));   $slide3_desc = check_markup(theme_get_setting('slide3_desc','nexus'), 'full_html'); $slide3_url = check_plain(theme_get_setting('slide3_url','nexus'));
+    $video_head = check_plain(theme_get_setting('video_head','nexus')); $video_desc = check_markup(theme_get_setting('video_desc','nexus'),'full_html'); $video_url = check_plain(theme_get_setting('video_url','nexus'));
   ?>
-  <div id="slidebox" class="flexslider">
-    <ul class="slides">
-      <li>
-        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-1.jpg'; ?>"/>
-        <?php if($slide1_head || $slide1_desc) : ?>
-          <div class="flex-caption">
-            <h2><?php print $slide1_head; ?></h2><?php print $slide1_desc; ?>
-            <a class="frmore" href="<?php print url($slide1_url); ?>"> <?php print t('READ MORE'); ?> </a>
-          </div>
-        <?php endif; ?>
-      </li>
-      <li>
-        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-2.jpg'; ?>"/>
-        <?php if($slide2_head || $slide2_desc) : ?>
-          <div class="flex-caption">
-            <h2><?php print $slide2_head; ?></h2><?php print $slide2_desc; ?>
-            <a class="frmore" href="<?php print url($slide2_url); ?>"> <?php print t('READ MORE'); ?> </a>
-          </div>
-        <?php endif; ?>
-      </li>
-      <li>
-        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-3.jpg'; ?>"/>
-        <?php if($slide3_head || $slide3_desc) : ?>
-          <div class="flex-caption">
-            <h2><?php print $slide3_head; ?></h2><?php print $slide3_desc; ?>
-            <a class="frmore" href="<?php print url($slide3_url); ?>"> <?php print t('READ MORE'); ?> </a>
-          </div>
-        <?php endif; ?>
-      </li>
-    </ul><!-- /slides -->
-    <div class="doverlay"></div>
+<!--   <div id="slidebox" class="flexslider"> -->
+    <div id="ninja-slider">
+      <div class="slider-inner">
+        <ul>
+          <li>
+            <a class="ns-img" href="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-1.jpg'; ?>"></a>
+            <?php if($slide1_head || $slide1_desc) : ?>
+              <div class="slide-title"><?php print $slide1_head; ?></div>
+              <div class="caption"><?php print $slide1_desc; ?></div>
+              <div class="url cl-effect-5"><a href="<?php print url($slide1_url); ?>"><span data-hover="Read More">Read More</span></a></div>
+            <?php endif; ?>
+          </li>
+          <li>
+            <a class="ns-img" href="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-2.jpg'; ?>"></a>
+            <?php if($slide2_head || $slide2_desc) : ?>
+              <div class="slide-title"><?php print $slide2_head; ?></div>
+              <div class="caption"><?php print $slide2_desc; ?></div>
+              <div class="url cl-effect-5"><a href="<?php print url($slide2_url); ?>"><span data-hover="Read More">Read More</span></a></div>
+            <?php endif; ?>
+          </li>
+          <li>
+            <a class="ns-img" href="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-3.jpg'; ?>"></a>
+            <?php if($slide3_head || $slide3_desc) : ?>
+              <div class="slide-title"><?php print $slide3_head; ?></div>
+              <div class="caption"><?php print $slide3_desc; ?></div>
+              <div class="url cl-effect-5"><a href="<?php print url($slide3_url); ?>"><span data-hover="Read More">Read More</span></a></div>
+            <?php endif; ?>
+          </li>
+          <li>
+            <div class="video">
+              <video id="myVideo" data-autoplay="true" volume=0 width="100%">
+                <source src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/mcvideo.mp4'; ?>" type="video/mp4">
+              </video>
+              <?php if($video_head || $video_desc) : ?>
+              <div class="slide-title"><?php print $video_head; ?></div>
+              <div class="caption"><?php print $video_desc; ?></div>
+              <div class="url cl-effect-5"><a href="<?php print url($video_url); ?>"><span data-hover="Read More">Read More</span></a></div>
+            <?php endif; ?>
+            </div>
+          </li>
+        </ul>
+        <div class="navsWrapper">
+                <div id="ninja-slider-prev"></div>
+                <div id="ninja-slider-next"></div>
+        </div>
+      </div>
+    </div>
   </div>
+<!--     <div class="doverlay"></div>
+  </div> -->
   <?php endif; ?>
   <?php endif; ?>
+  <div class="main-page-content">
 
   <?php if($page['preface_first'] || $page['preface_middle'] || $page['preface_last']) : ?>
     <?php $preface_col = ( 12 / ( (bool) $page['preface_first'] + (bool) $page['preface_middle'] + (bool) $page['preface_last'] ) ); ?>
@@ -237,7 +257,7 @@
     <div class="container">
       <div class="row">
         <div class="fcred col-sm-12">
-          <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <a href="<?php print $front_page; ?>"><?php print $site_name; ?></a>. <?php print t('Theme by'); ?>  <a href="http://www.devsaran.com" target="_blank">Devsaran</a>.
+          <?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <a href="<?php print $front_page; ?>"><?php print $site_name; ?></a>. <?php print t('Theme by'); ?>  <a href="#" target="_blank">Kumar Tej</a>.
         </div>
       </div>
     </div>

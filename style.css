@@ -73,6 +73,9 @@ img {
   max-width: 100%;
 }
 
+#site-logo img{
+  max-width: 75%;
+}
 
 /* Commons
 ================================================== */
@@ -274,13 +277,12 @@ a:focus {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
-
+  z-index: 100;
   max-height: 115px;
   display: block;
 }
 .site-branding{
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 #site-logo {
   float: left;
@@ -291,9 +293,14 @@ h1#site-title{
   font-weight: 800;
   margin-top: 18px;
   clear: none;
+  float: left;
 }
 h1#site-title a:link, h1#site-title a:visited{
   color: #ff0000;
+}
+
+.col-sm-6{
+  padding:0 0 0 0;
 }
 
 /* Menu */
@@ -316,10 +323,10 @@ h1#site-title a:link, h1#site-title a:visited{
 
 #main-menu {
   padding:0px 0px;
-  margin: 22px 0px 15px;
+  margin: 22px 0px 15px 0;
   height:45px;
   border-bottom: none;
-  float: left;
+  float: center;
 }
   
 #main-menu ul {
@@ -430,10 +437,10 @@ h1#site-title a:link, h1#site-title a:visited{
 /* Slider */
 
 #slidebox{
-  max-height: 550px;
+  max-height: 650px;
   position: relative;
   background: #000;
-  margin-top: 115px;
+/*  margin-top: 115px;*/
 }
 
 .doverlay{
@@ -552,8 +559,8 @@ a.frmore{
 ----------------------------------------------- */
 
 .node h2.title a, h1.page-title {
-  color: #000000;
-  font-size: 36px;
+  color: #ff0000;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -1166,12 +1173,25 @@ border-left: 1px solid; border-right: 1px solid; height: 40px; margin-left: -36p
     display: none;
   }
 
+  .site-main-content{
+    margin: 115px 0 0 0;
+  }
+
 }
 
-header{
+/*header{
   width: 100%;
+}*/
+
+.site-main-content{
+  margin: 0;
 }
 
-#site-main-content{
-  margin-top: 115px;
+
+.main-page-content{
+  margin-top: 10%;
+}
+
+.node footer{
+  float: right;
 }
